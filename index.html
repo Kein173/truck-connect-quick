@@ -114,7 +114,7 @@ function t(k){return dict[lang()][k]||dict.ru[k]||k}
 function applyLang(){document.documentElement.lang=lang();document.querySelectorAll("[data-t]").forEach(el=>el.textContent=t(el.dataset.t));$("language").value=lang();document.querySelectorAll("[data-action]").forEach(b=>b.querySelector("[data-t]").textContent=t(b.querySelector("[data-t]").dataset.t))}
 function show(id){["home","settings","cmr","compose"].forEach(x=>$(x).classList.toggle("hidden",x!==id))}
 function now(){return new Intl.DateTimeFormat(undefined,{hour:"2-digit",minute:"2-digit",hour12:false}).format(new Date())}
-function eventText(key){return t(key).toLowerCase().replace(/^./,c=>c.toUpperCase())+" — "+now()}
+function eventText(key){const fixedCodes={start:"STA",arriveLoad:"ZA",beginLoad:"Start ZA",arriveUnload:"RO",beginUnload:"Start RO",finish:"PA"};return fixedCodes[key]+" — "+now()}
 function openWA(text){const phone=localStorage.getItem("tcq_phone")||"";const url="https://wa.me/"+phone.replace(/\D/g,"")+"?text="+encodeURIComponent(text);location.href=url}
 document.querySelectorAll("[data-action]").forEach(b=>b.addEventListener("click",()=>openWA(eventText(actionKeys[b.dataset.action]))));
 $("settingsBtn").onclick=()=>{ $("language").value=lang();$("phone").value=localStorage.getItem("tcq_phone")||"";$("email").value=localStorage.getItem("tcq_email")||"";show("settings")};
