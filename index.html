@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#101820">
+<title>Truck Connect Quick</title>
+<link rel="manifest" href="manifest.webmanifest">
+<style>
+:root{color-scheme:dark;--bg:#101820;--panel:#1b2732;--panel2:#22313e;--line:#344654;--text:#f4f7f9;--muted:#aab8c3;--accent:#b9d6e8}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);font:16px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.app{max-width:520px;min-height:100dvh;margin:auto;padding:calc(18px + env(safe-area-inset-top)) 16px calc(20px + env(safe-area-inset-bottom))}
+header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.brand{font-size:19px;font-weight:800;letter-spacing:1.2px}.sub{font-size:10px;letter-spacing:2px;color:var(--muted);margin-top:3px}
+.iconbtn,.btn{border:1px solid var(--line);background:var(--panel);color:var(--text);border-radius:14px}
+.iconbtn{width:44px;height:44px;font-size:20px}
+h2{font-size:12px;letter-spacing:1.5px;color:var(--muted);font-weight:600;margin:20px 2px 10px}
+.action{width:100%;min-height:76px;padding:14px 10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;font-weight:700;font-size:14px;line-height:1.2}
+.primary{min-height:88px;background:#d7e8f2;color:#14222c;border:0;font-size:19px}
+.finish{min-height:88px;background:#344b5b;border-color:#597184;font-size:19px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
+.symbol{font-size:22px}.bottom{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+button{cursor:pointer}button:active{transform:scale(.985)}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:15px;margin-top:12px}
+.hidden{display:none!important}.muted{color:var(--muted);font-size:13px;line-height:1.45}
+label{display:block;font-size:13px;color:var(--muted);margin:14px 0 6px}
+input,select{width:100%;background:#101820;color:var(--text);border:1px solid var(--line);border-radius:10px;padding:13px;font-size:16px}
+.btn{padding:13px 15px;font-weight:650}.wide{width:100%;margin-top:12px}
+.row{display:flex;gap:9px}.row>*{flex:1}
+.filelist{font-size:13px;color:var(--muted);margin-top:10px;overflow-wrap:anywhere}
+.notice{font-size:12px;color:#c3d1da;line-height:1.45;margin-top:12px}
+.back{margin:0 0 14px;background:transparent;border:0;color:var(--accent);padding:8px 0;font-size:15px}
+footer{text-align:center;color:#71818d;font-size:11px;margin-top:24px}
+</style>
+</head>
+<body>
+<div class="app">
+<header>
+ <div><div class="brand">TRUCK CONNECT</div><div class="sub">QUICK DRIVER</div></div>
+ <button class="iconbtn" id="settingsBtn" aria-label="Настройки">⚙</button>
+</header>
+
+<main id="home">
+ <h2>БЫСТРЫЕ СООБЩЕНИЯ</h2>
+ <button class="btn action primary" data-action="start"><span class="symbol">▶</span><span data-t="start">СТАРТ</span></button>
+ <div class="grid">
+  <button class="btn action" data-action="arriveLoad"><span class="symbol">📍</span><span data-t="arriveLoad">ПРИБЫЛ НА ЗАГРУЗКУ</span></button>
+  <button class="btn action" data-action="beginLoad"><span class="symbol">▣</span><span data-t="beginLoad">НАЧАЛО ЗАГРУЗКИ</span></button>
+  <button class="btn action" data-action="arriveUnload"><span class="symbol">📍</span><span data-t="arriveUnload">ПРИБЫЛ НА ВЫГРУЗКУ</span></button>
+  <button class="btn action" data-action="beginUnload"><span class="symbol">▣</span><span data-t="beginUnload">НАЧАЛО ВЫГРУЗКИ</span></button>
+ </div>
+ <button class="btn action finish" data-action="finish"><span class="symbol">■</span><span data-t="finish">ЗАВЕРШИТЬ РЕЙС</span></button>
+ <div class="bottom">
+  <button class="btn action" id="cmrBtn"><span class="symbol">📄</span><span data-t="cmr">CMR / ДОКУМЕНТЫ</span></button>
+  <button class="btn action" id="messageBtn"><span class="symbol">💬</span><span data-t="message">СООБЩЕНИЕ</span></button>
+ </div>
+</main>
+
+<section id="settings" class="hidden">
+ <button class="back" data-back>← <span data-t="back">Назад</span></button>
+ <h2 data-t="settingsTitle">НАСТРОЙКИ</h2>
+ <div class="panel">
+  <label data-t="language">Язык</label>
+  <select id="language">
+   <option value="ru">Русский</option><option value="en">English</option><option value="pl">Polski</option><option value="de">Deutsch</option><option value="nl">Nederlands</option>
+  </select>
+  <label data-t="phone">Номер логиста WhatsApp</label><input id="phone" type="tel" placeholder="+48 000 000 000">
+  <label data-t="email">E-mail для CMR</label><input id="email" type="email" placeholder="logistics@example.com">
+  <button class="btn wide" id="saveSettings" data-t="save">Сохранить настройки</button>
+  <p class="notice" data-t="localOnly">Настройки сохраняются только на этом устройстве.</p>
+ </div>
+</section>
+
+<section id="cmr" class="hidden">
+ <button class="back" data-back>← <span data-t="back">Назад</span></button>
+ <h2 data-t="cmrTitle">ОТПРАВКА CMR</h2>
+ <div class="panel">
+  <label data-t="cmrNumber">Номер CMR (необязательно)</label><input id="cmrNumber" type="text" placeholder="123456">
+  <label data-t="takePhoto">Сфотографировать страницы</label>
+  <input id="cameraFiles" type="file" accept="image/*" capture="environment" multiple>
+  <label data-t="chooseFiles">Добавить фото, сканы или файлы</label>
+  <input id="attachments" type="file" accept="image/*,.pdf,.doc,.docx,.xls,.xlsx" multiple>
+  <div class="filelist" id="fileList"></div>
+  <button class="btn wide" id="shareFiles" data-t="shareMail">Передать вложения в Почту</button>
+  <button class="btn wide" id="openMail" data-t="openMail">Открыть письмо без вложений</button>
+  <p class="notice" data-t="mailNotice">На iPhone веб-приложение не может одновременно гарантировать заранее заполненного получателя и прикрепление файлов в стандартной Почте. Для вложений откроется системное меню «Поделиться»: выбери «Почта» и проверь адрес перед отправкой.</p>
+ </div>
+</section>
+
+<section id="compose" class="hidden">
+ <button class="back" data-back>← <span data-t="back">Назад</span></button>
+ <h2 data-t="composeTitle">СООБЩЕНИЕ ЛОГИСТУ</h2>
+ <div class="panel">
+  <label data-t="textMessage">Текст сообщения</label>
+  <textarea id="customText" rows="5" style="width:100%;background:#101820;color:white;border:1px solid var(--line);border-radius:10px;padding:12px;font:16px inherit"></textarea>
+  <button class="btn wide" id="sendCustom" data-t="openWhatsApp">Открыть WhatsApp</button>
+ </div>
+</section>
+<footer>Truck Connect Quick · prototype</footer>
+</div>
+<script>
+const dict={
+ru:{start:"СТАРТ",arriveLoad:"ПРИБЫЛ НА ЗАГРУЗКУ",beginLoad:"НАЧАЛО ЗАГРУЗКИ",arriveUnload:"ПРИБЫЛ НА ВЫГРУЗКУ",beginUnload:"НАЧАЛО ВЫГРУЗКИ",finish:"ЗАВЕРШИТЬ РЕЙС",cmr:"CMR / ДОКУМЕНТЫ",message:"СООБЩЕНИЕ",back:"Назад",settingsTitle:"НАСТРОЙКИ",language:"Язык",phone:"Номер логиста WhatsApp",email:"E-mail для CMR",save:"Сохранить настройки",localOnly:"Настройки сохраняются только на этом устройстве.",cmrTitle:"ОТПРАВКА CMR",cmrNumber:"Номер CMR (необязательно)",takePhoto:"Сфотографировать страницы",chooseFiles:"Добавить фото, сканы или файлы",shareMail:"Передать вложения в Почту",openMail:"Открыть письмо без вложений",mailNotice:"На iPhone веб-приложение не может одновременно гарантировать заранее заполненного получателя и прикрепление файлов в стандартной Почте. Для вложений откроется системное меню «Поделиться»: выбери «Почта» и проверь адрес перед отправкой.",composeTitle:"СООБЩЕНИЕ ЛОГИСТУ",textMessage:"Текст сообщения",openWhatsApp:"Открыть WhatsApp"},
+en:{start:"START",arriveLoad:"ARRIVED AT LOADING",beginLoad:"LOADING STARTED",arriveUnload:"ARRIVED AT UNLOADING",beginUnload:"UNLOADING STARTED",finish:"TRIP COMPLETED",cmr:"CMR / DOCUMENTS",message:"MESSAGE",back:"Back",settingsTitle:"SETTINGS",language:"Language",phone:"Logistics WhatsApp number",email:"CMR e-mail",save:"Save settings",localOnly:"Settings are stored on this device only.",cmrTitle:"SEND CMR",cmrNumber:"CMR number (optional)",takePhoto:"Take page photos",chooseFiles:"Add photos, scans or files",shareMail:"Share attachments to Mail",openMail:"Open email without attachments",mailNotice:"On iPhone, a web app cannot guarantee both a prefilled recipient and file attachments in Apple Mail. For attachments, the system Share menu opens: choose Mail and check the recipient before sending.",composeTitle:"MESSAGE TO LOGISTICS",textMessage:"Message text",openWhatsApp:"Open WhatsApp"},
+pl:{start:"START",arriveLoad:"PRZYJAZD NA ZAŁADUNEK",beginLoad:"ROZPOCZĘCIE ZAŁADUNKU",arriveUnload:"PRZYJAZD NA ROZŁADUNEK",beginUnload:"ROZPOCZĘCIE ROZŁADUNKU",finish:"KONIEC TRASY",cmr:"CMR / DOKUMENTY",message:"WIADOMOŚĆ",back:"Wstecz",settingsTitle:"USTAWIENIA",language:"Język",phone:"Numer WhatsApp logistyka",email:"E-mail do CMR",save:"Zapisz ustawienia",localOnly:"Ustawienia są przechowywane tylko na tym urządzeniu.",cmrTitle:"WYŚLIJ CMR",cmrNumber:"Numer CMR (opcjonalnie)",takePhoto:"Zrób zdjęcia stron",chooseFiles:"Dodaj zdjęcia, skany lub pliki",shareMail:"Udostępnij załączniki do Mail",openMail:"Otwórz e-mail bez załączników",mailNotice:"Na iPhonie aplikacja internetowa nie może zagwarantować jednocześnie wstępnie ustawionego odbiorcy i załączników w Apple Mail. Przy załącznikach otworzy się menu Udostępnij: wybierz Mail i sprawdź odbiorcę.",composeTitle:"WIADOMOŚĆ DO LOGISTYKI",textMessage:"Treść wiadomości",openWhatsApp:"Otwórz WhatsApp"},
+de:{start:"START",arriveLoad:"ANKUNFT ZUR BELADUNG",beginLoad:"BELADUNG BEGONNEN",arriveUnload:"ANKUNFT ZUR ENTLADUNG",beginUnload:"ENTLADUNG BEGONNEN",finish:"TOUR BEENDET",cmr:"CMR / DOKUMENTE",message:"NACHRICHT",back:"Zurück",settingsTitle:"EINSTELLUNGEN",language:"Sprache",phone:"WhatsApp-Nummer der Disposition",email:"E-Mail für CMR",save:"Einstellungen speichern",localOnly:"Einstellungen werden nur auf diesem Gerät gespeichert.",cmrTitle:"CMR SENDEN",cmrNumber:"CMR-Nummer (optional)",takePhoto:"Seiten fotografieren",chooseFiles:"Fotos, Scans oder Dateien hinzufügen",shareMail:"Anhänge an Mail teilen",openMail:"E-Mail ohne Anhänge öffnen",mailNotice:"Auf dem iPhone kann eine Web-App in Apple Mail nicht gleichzeitig Empfänger und Anhänge zuverlässig vorausfüllen. Für Anhänge öffnet sich das Teilen-Menü: Mail wählen und Empfänger prüfen.",composeTitle:"NACHRICHT AN DIE DISPOSITION",textMessage:"Nachrichtentext",openWhatsApp:"WhatsApp öffnen"},
+nl:{start:"START",arriveLoad:"AANGEKOMEN BIJ LADEN",beginLoad:"LADEN GESTART",arriveUnload:"AANGEKOMEN BIJ LOSSEN",beginUnload:"LOSSEN GESTART",finish:"RIT AFGEROND",cmr:"CMR / DOCUMENTEN",message:"BERICHT",back:"Terug",settingsTitle:"INSTELLINGEN",language:"Taal",phone:"WhatsApp-nummer planning",email:"E-mail voor CMR",save:"Instellingen opslaan",localOnly:"Instellingen worden alleen op dit apparaat opgeslagen.",cmrTitle:"CMR VERZENDEN",cmrNumber:"CMR-nummer (optioneel)",takePhoto:"Pagina's fotograferen",chooseFiles:"Foto's, scans of bestanden toevoegen",shareMail:"Bijlagen delen met Mail",openMail:"E-mail openen zonder bijlagen",mailNotice:"Op iPhone kan een webapp in Apple Mail niet tegelijk de ontvanger en bijlagen betrouwbaar vooraf invullen. Kies in het deelmenu Mail en controleer de ontvanger.",composeTitle:"BERICHT AAN PLANNING",textMessage:"Berichttekst",openWhatsApp:"WhatsApp openen"}
+};
+const actionKeys={start:"start",arriveLoad:"arriveLoad",beginLoad:"beginLoad",arriveUnload:"arriveUnload",beginUnload:"beginUnload",finish:"finish"};
+let files=[];
+const $=id=>document.getElementById(id);
+function lang(){return localStorage.getItem("tcq_lang")||"ru"}
+function t(k){return dict[lang()][k]||dict.ru[k]||k}
+function applyLang(){document.documentElement.lang=lang();document.querySelectorAll("[data-t]").forEach(el=>el.textContent=t(el.dataset.t));$("language").value=lang();document.querySelectorAll("[data-action]").forEach(b=>b.querySelector("[data-t]").textContent=t(b.querySelector("[data-t]").dataset.t))}
+function show(id){["home","settings","cmr","compose"].forEach(x=>$(x).classList.toggle("hidden",x!==id))}
+function now(){return new Intl.DateTimeFormat(undefined,{hour:"2-digit",minute:"2-digit",hour12:false}).format(new Date())}
+function eventText(key){return t(key).toLowerCase().replace(/^./,c=>c.toUpperCase())+" — "+now()}
+function openWA(text){const phone=localStorage.getItem("tcq_phone")||"";const url="https://wa.me/"+phone.replace(/\D/g,"")+"?text="+encodeURIComponent(text);location.href=url}
+document.querySelectorAll("[data-action]").forEach(b=>b.addEventListener("click",()=>openWA(eventText(actionKeys[b.dataset.action]))));
+$("settingsBtn").onclick=()=>{ $("language").value=lang();$("phone").value=localStorage.getItem("tcq_phone")||"";$("email").value=localStorage.getItem("tcq_email")||"";show("settings")};
+document.querySelectorAll("[data-back]").forEach(b=>b.onclick=()=>show("home"));
+$("saveSettings").onclick=()=>{localStorage.setItem("tcq_lang",$("language").value);localStorage.setItem("tcq_phone",$("phone").value.trim());localStorage.setItem("tcq_email",$("email").value.trim());applyLang();show("home")};
+$("language").onchange=()=>{localStorage.setItem("tcq_lang",$("language").value);applyLang()};
+$("cmrBtn").onclick=()=>{files=[];updateFiles();$("cmrNumber").value="";$("cameraFiles").value="";$("attachments").value="";show("cmr")};
+function updateFiles(){ $("fileList").textContent=files.length?files.map(f=>f.name).join(" · "):""}
+function addFiles(list){for(const f of list){if(!files.some(x=>x.name===f.name&&x.size===f.size))files.push(f)}updateFiles()}
+$("cameraFiles").onchange=e=>addFiles(e.target.files);
+$("attachments").onchange=e=>addFiles(e.target.files);
+$("shareFiles").onclick=async()=>{
+ if(!files.length){alert("Сначала добавьте фото или файл.");return}
+ if(!navigator.share||!navigator.canShare||!navigator.canShare({files})){alert("Этот браузер не поддерживает передачу выбранных файлов через системное меню. Попробуйте открыть приложение в Safari или Chrome.");return}
+ try{await navigator.share({files,title:"CMR "+$("cmrNumber").value,text:"CMR "+$("cmrNumber").value});}catch(e){}
+};
+$("openMail").onclick=()=>{const email=localStorage.getItem("tcq_email")||"";const n=$("cmrNumber").value;location.href="mailto:"+encodeURIComponent(email)+"?subject="+encodeURIComponent("CMR "+n)};
+$("messageBtn").onclick=()=>{$("customText").value="";show("compose")};
+$("sendCustom").onclick=()=>{const txt=$("customText").value.trim();if(txt)openWA(txt)};
+applyLang();
+if("serviceWorker" in navigator && location.protocol.startsWith("http"))navigator.serviceWorker.register("./sw.js").catch(()=>{});
+</script>
+</body></html>

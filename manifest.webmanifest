@@ -1,0 +1,10 @@
+{
+  "name": "Truck Connect Quick",
+  "short_name": "TC Quick",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#101820",
+  "theme_color": "#101820",
+  "lang": "ru",
+  "icons": []
+}
