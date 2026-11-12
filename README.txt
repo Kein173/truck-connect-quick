@@ -1,24 +1,22 @@
-TRUCK CONNECT QUICK — browser prototype
+TRUCK CONNECT QUICK — v20 CMR scanner feedback update
 
 Files:
-- index.html: responsive interface and interactions
+- index.html: app interface and interactions
 - manifest.webmanifest: installable web app metadata
-- sw.js: basic offline cache
+- sw.js: offline cache (v20)
+- icon files: app icons
 
-Prototype features:
-- Main screen with agreed button layout
-- WhatsApp click-to-chat with event text and local time
-- Five language options
-- One WhatsApp number and one CMR email in local settings
-- CMR photo/file selection and system share sheet where supported
-- Custom WhatsApp message
+Changes in v20:
+- Clear confirmation after each captured page
+- Visible page counter and thumbnail previews
+- Each page can be removed before PDF creation
+- Capture button shows a saving state and is temporarily disabled to prevent accidental repeated captures
+- Short vibration confirmation where supported
+- PDF creation button is protected against repeated taps
 
-Important limitations:
-- This is a prototype, not a published or hosted app.
-- WhatsApp opens with a prefilled message; the user must press Send.
-- Browsers cannot guarantee automatic return from WhatsApp or Mail.
-- A browser PWA cannot reliably prefill the recipient in Apple Mail and attach multiple files in the same composer. The attachment action uses the system share sheet; choose Mail and verify the recipient.
-- For fully integrated CMR email with fixed recipient, multiple attachments, and more reliable app switching, a native iOS/Android app is the appropriate next implementation.
-- Settings are stored locally in the browser; no server or message history is used.
+Existing app functions and layout are retained from the v19 CMR scanner build.
 
-To test as a web app, host these files over HTTPS. PWA installation and camera/share capabilities vary by browser and device.
+Important:
+- Camera access requires HTTPS and browser permission.
+- Email attachments are handed off through the phone's system Share menu; the recipient should be checked before sending.
+- Settings remain local to the device.
