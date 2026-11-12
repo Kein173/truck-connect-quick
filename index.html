@@ -100,50 +100,60 @@ main,.grid,.bottom,.break-wrap,header,.brandline{min-width:0;max-width:100%}
  footer{font-size:10px;padding-top:20px}
  .footer-version{display:block;margin:0;padding:0;border:0}
 }
-@media(max-width:420px){
- .grid>.action,.bottom>.action{flex-direction:column;justify-content:center;gap:3px}
- .grid>.action .symbol,.bottom>.action .symbol{width:auto}
- .grid>.action .symbol svg,.bottom>.action .symbol svg{width:27px;height:27px}
- .grid>.action{min-height:68px;font-size:clamp(12px,3.6vw,15px)}
- .bottom>.action{min-height:70px;font-size:clamp(11px,3.3vw,13px)}
- .grid>.action>span:not(.symbol),.bottom>.action>span:not(.symbol){white-space:nowrap;overflow-wrap:normal}
-}
-@media(max-width:350px){
- .brand-title{font-size:10.5px;letter-spacing:-.2px}
- .brand-divider{height:34px}
- .logo{font-size:18px}
- .action{font-size:12px}
+
+/* v9: preserve the approved horizontal button layout on phones */
+html,body{height:auto;min-height:100%;overflow-x:hidden;overflow-y:auto}
+.app{min-height:100svh;height:auto;overflow:visible;padding-top:calc(12px + env(safe-area-inset-top));padding-bottom:calc(18px + env(safe-area-inset-bottom))}
+header{margin-bottom:12px}
+.brandline{gap:7px}
+.brandmark{width:38px;height:46px}
+.logo{font-size:clamp(21px,5.8vw,27px)}
+.brand-title{font-size:clamp(12px,3.8vw,17px);letter-spacing:.2px}
+.iconbtn{width:40px;height:40px;border:0;background:transparent;padding:2px}
+.iconbtn svg{width:34px;height:34px}
+h2{margin:10px 2px 12px;font-size:clamp(13px,3.7vw,17px)}
+.action{flex-direction:row;justify-content:center;gap:8px;min-height:74px;padding:10px 8px;font-size:clamp(14px,4vw,18px);overflow:hidden}
+.action .symbol{width:38px;flex:0 0 38px}
+.action .symbol svg{width:36px;height:36px}
+.action>span:not(.symbol){white-space:nowrap;overflow-wrap:normal}
+.primary{flex-direction:column;min-height:100px;font-size:clamp(25px,7vw,31px);gap:7px}
+.primary .symbol{width:auto;flex:0 0 auto}
+.primary .symbol svg{width:36px;height:36px}
+.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:12px 0}
+.break-wrap{margin:8px 0 11px}
+.break45{width:min(68%,300px);min-height:72px;gap:10px;font-size:clamp(17px,5vw,21px)}
+.break45 .symbol{width:50px;flex:0 0 50px}
+.break45 .symbol svg{width:48px;height:42px}
+.finish{min-height:88px;margin-top:12px;font-size:clamp(18px,5.2vw,23px)}
+.finish .symbol{width:65px;flex:0 0 65px}
+.finish .symbol svg{width:62px;height:50px}
+.bottom{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:12px}
+.bottom .action{min-height:78px;gap:6px;font-size:clamp(12px,3.4vw,15px)}
+.bottom .action .symbol{width:34px;flex:0 0 34px}
+.bottom .action .symbol svg{width:32px;height:32px}
+footer{margin-top:24px;padding-top:12px;font-size:10px;line-height:1.55}
+.footer-version{display:block;margin:0;padding:0;border:0}
+@media(max-width:360px){
+ header{gap:5px}
+ .brandline{gap:5px}
+ .brandmark{width:31px;height:40px}
+ .logo{font-size:19px;letter-spacing:-1.1px}
+ .brand-title{font-size:11px;letter-spacing:0}
+ .brand-divider{height:36px}
+ .iconbtn{width:34px;height:34px}
+ .iconbtn svg{width:29px;height:29px}
+ .action{gap:5px;padding-left:4px;padding-right:4px;font-size:12px}
+ .action .symbol{width:30px;flex-basis:30px}
+ .action .symbol svg{width:29px;height:29px}
  .bottom .action{font-size:10px}
- .action .symbol{width:28px}
- .action .symbol svg{width:28px;height:28px}
- .finish{font-size:15px}
-}@media(max-height:820px){
- .app{padding-top:calc(10px + env(safe-area-inset-top));padding-bottom:calc(10px + env(safe-area-inset-bottom))}
- header{margin-bottom:8px}
- h2{margin-top:7px;margin-bottom:9px}
- .primary{min-height:82px}
- .grid{margin:8px 0;gap:8px}
- .grid>.action{min-height:61px}
- .break-wrap{margin:4px 0 6px}
- .break45{min-height:60px}
- .finish{min-height:70px;margin-top:8px}
- .bottom{margin-top:8px}
- .bottom>.action{min-height:62px}
- footer{padding-top:12px;line-height:1.45}
+ .bottom .action .symbol{width:27px;flex-basis:27px}
+ .bottom .action .symbol svg{width:26px;height:26px}
 }
-@media(max-height:700px){
- .app{padding-top:calc(6px + env(safe-area-inset-top));padding-bottom:calc(6px + env(safe-area-inset-bottom))}
- header{margin-bottom:5px}
- .primary{min-height:70px}
- .grid{margin:6px 0}
- .grid>.action{min-height:54px}
- .break-wrap{margin:3px 0 4px}
- .break45{min-height:52px}
- .finish{min-height:60px;margin-top:6px}
- .bottom{margin-top:6px}
- .bottom>.action{min-height:54px}
- footer{padding-top:8px;font-size:9px}
+@media(max-height:720px){
+ .app{padding-top:calc(8px + env(safe-area-inset-top))}
+ footer{margin-top:18px}
 }
+
 </style>
 </head>
 <body>
