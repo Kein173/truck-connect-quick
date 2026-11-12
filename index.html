@@ -299,6 +299,30 @@ footer{flex:0 0 auto!important;margin-top:8px!important;padding-top:5px!importan
  footer{font-size:8px!important}
 }
 
+
+/* v17: modestly enlarge controls and labels without changing the balanced layout */
+.primary{min-height:84px!important;font-size:clamp(24px,6.5vw,29px)!important}
+.primary .symbol svg{width:32px!important;height:32px!important}
+.grid>.action{min-height:62px!important;font-size:clamp(13px,3.8vw,16px)!important;gap:7px!important}
+.grid>.action .symbol{width:36px!important;flex:0 0 36px!important}
+.grid>.action .symbol svg{width:34px!important;height:34px!important}
+.break45{min-height:62px!important;font-size:clamp(16px,4.8vw,20px)!important}
+.break45 .symbol{width:47px!important;flex:0 0 47px!important}
+.break45 .symbol svg{width:46px!important;height:39px!important}
+.finish{min-height:74px!important;font-size:clamp(18px,5vw,22px)!important}
+.finish .symbol{width:62px!important;flex:0 0 62px!important}
+.finish .symbol svg{width:59px!important;height:47px!important}
+.bottom>.action{min-height:66px!important;font-size:clamp(11px,3.3vw,14px)!important;gap:6px!important}
+.bottom>.action .symbol{width:33px!important;flex:0 0 33px!important}
+.bottom>.action .symbol svg{width:31px!important;height:31px!important}
+@media(max-height:700px){
+ .primary{min-height:74px!important}
+ .grid>.action{min-height:56px!important}
+ .break45{min-height:56px!important}
+ .finish{min-height:66px!important}
+ .bottom>.action{min-height:59px!important}
+}
+
 </style>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
