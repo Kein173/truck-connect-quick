@@ -203,6 +203,67 @@ main{overflow:visible!important}
 footer{margin-top:auto!important;padding-top:8px!important}
 
  .app::-webkit-scrollbar{display:none}
+
+/* v15: fixed, slightly shorter home screen — no vertical page bouncing */
+html,body{
+ width:100%;height:100%;min-height:100%;margin:0;padding:0;
+ overflow:hidden!important;overscroll-behavior:none;background:#031225;
+}
+body{position:fixed!important;inset:0!important}
+.app{
+ position:fixed!important;inset:0!important;
+ width:100%!important;max-width:560px!important;
+ height:100vh!important;height:100dvh!important;
+ min-height:0!important;max-height:none!important;
+ margin:0 auto!important;overflow:hidden!important;
+ display:flex!important;flex-direction:column!important;
+ padding:calc(env(safe-area-inset-top,0px) + 7px) clamp(10px,3.3vw,16px) calc(env(safe-area-inset-bottom,0px) + 6px)!important;
+}
+header{flex:0 0 auto;margin-bottom:5px!important;min-height:38px}
+.brandmark{width:34px!important;height:40px!important}
+.brandline{gap:6px!important}
+.logo{font-size:clamp(19px,5.3vw,25px)!important}
+.logo-sub{font-size:8px!important;margin-top:2px!important}
+.brand-divider{height:35px!important}
+.brand-title{font-size:clamp(11px,3.4vw,15px)!important;letter-spacing:0!important}
+.iconbtn{width:34px!important;height:34px!important;padding:0!important;border:0!important;background:transparent!important}
+.iconbtn svg{width:29px!important;height:29px!important}
+#home{flex:0 0 auto!important;width:100%;min-height:0!important}
+h2{margin:5px 2px 7px!important;font-size:clamp(12px,3.5vw,15px)!important;letter-spacing:1px!important}
+.primary{min-height:72px!important;padding:7px!important;gap:3px!important;font-size:clamp(22px,6vw,27px)!important}
+.primary .symbol svg{width:29px!important;height:29px!important}
+.grid{gap:7px!important;margin:7px 0!important}
+.grid>.action{min-height:54px!important;padding:5px 4px!important;gap:6px!important;font-size:clamp(12px,3.5vw,15px)!important}
+.grid>.action .symbol{width:31px!important;flex:0 0 31px!important}
+.grid>.action .symbol svg{width:29px!important;height:29px!important}
+.break-wrap{margin:5px 0 6px!important}
+.break45{width:min(66%,280px)!important;min-height:55px!important;padding:5px!important;gap:7px!important;font-size:clamp(15px,4.5vw,18px)!important}
+.break45 .symbol{width:43px!important;flex:0 0 43px!important}
+.break45 .symbol svg{width:42px!important;height:35px!important}
+.finish{min-height:65px!important;margin-top:7px!important;padding:5px!important;font-size:clamp(16px,4.8vw,20px)!important}
+.finish .symbol{width:57px!important;flex:0 0 57px!important}
+.finish .symbol svg{width:54px!important;height:43px!important}
+.bottom{gap:7px!important;margin-top:7px!important}
+.bottom>.action{min-height:58px!important;padding:5px 3px!important;gap:5px!important;font-size:clamp(10px,3vw,13px)!important}
+.bottom>.action .symbol{width:29px!important;flex:0 0 29px!important}
+.bottom>.action .symbol svg{width:27px!important;height:27px!important}
+footer{flex:0 0 auto!important;margin-top:auto!important;padding-top:6px!important;font-size:9px!important;line-height:1.35!important}
+.footer-version{display:block!important;margin:0!important;padding:0!important;border:0!important}
+#settings,#cmr,#compose{flex:1 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding-bottom:10px}
+@media(max-height:740px){
+ header{margin-bottom:3px!important}
+ h2{margin-top:3px!important;margin-bottom:5px!important}
+ .primary{min-height:66px!important}
+ .grid{margin:5px 0!important}
+ .grid>.action{min-height:49px!important}
+ .break-wrap{margin:3px 0 4px!important}
+ .break45{min-height:50px!important}
+ .finish{min-height:58px!important;margin-top:5px!important}
+ .bottom{margin-top:5px!important}
+ .bottom>.action{min-height:51px!important}
+ footer{font-size:8px!important;padding-top:4px!important}
+}
+
 </style>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -335,17 +396,5 @@ if("serviceWorker" in navigator && location.protocol.startsWith("http"))navigato
 
 
 
-<script>
-(function(){
- function resetAppScroll(){
-   var app=document.querySelector('.app');
-   if(app) app.scrollTop=0;
- }
- window.addEventListener('pageshow',function(){setTimeout(resetAppScroll,80)});
- window.addEventListener('load',function(){setTimeout(resetAppScroll,80)});
- document.addEventListener('visibilitychange',function(){
-   if(!document.hidden) setTimeout(resetAppScroll,80);
- });
-})();
-</script>
+
 </body></html>
