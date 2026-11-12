@@ -14,7 +14,7 @@
 html,body{min-height:100%;background:var(--bg)}
 body{margin:0;color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
 .app{width:min(100%,560px);min-height:100dvh;margin:0 auto;padding:calc(22px + env(safe-area-inset-top)) 16px calc(20px + env(safe-area-inset-bottom));display:flex;flex-direction:column;background:radial-gradient(ellipse at 50% 38%,#06213a 0%,#031629 58%,#020e20 100%)}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:17px}
+header{flex:none;display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:17px}
 .brandline{display:flex;align-items:center;gap:10px;min-width:0}
 .brandmark{width:43px;height:51px;flex:none}
 .brandtext{min-width:0}
@@ -46,7 +46,7 @@ h2:after{content:"";height:2px;background:var(--line);flex:1;min-width:12px}
 .bottom .action{min-height:92px;gap:10px}
 .bottom .action .symbol{width:54px}
 .bottom .action .symbol svg{width:52px;height:52px}
-button{cursor:pointer}button:active{transform:scale(.985)}
+main{flex:none} section{flex:none} button{cursor:pointer}button:active{transform:scale(.985)}
 .panel{background:var(--panel);border:2px solid var(--line);border-radius:6px;padding:15px;margin-top:12px}
 .hidden{display:none!important}.muted{color:var(--muted);font-size:13px;line-height:1.45}
 label{display:block;font-size:13px;color:var(--muted);margin:14px 0 6px}
@@ -58,7 +58,38 @@ input,select,textarea{width:100%;background:#071321;color:var(--text);border:1px
 .back{margin:0 0 14px;background:transparent;border:0;color:var(--accent);padding:8px 0;font-size:15px}
 footer{text-align:center;color:#d0dce6;font-size:clamp(9px,2.7vw,12px);line-height:1.7;margin-top:auto;padding-top:26px}
 .footer-version{display:inline-block;letter-spacing:.3px;margin-left:14px;padding-left:14px;border-left:2px solid #e7eff5}
-@media(max-width:370px){.app{padding-left:12px;padding-right:12px}.brandmark{width:34px}.brand-title{font-size:14px;letter-spacing:.4px}.logo{font-size:21px}.action{gap:8px;padding:10px 7px}.action .symbol{width:43px}.action .symbol svg{width:38px;height:38px}.bottom .action{font-size:14px}.footer-version{display:block;margin:0;padding:0;border:0}}
+@media(max-width:380px){
+ .app{padding-left:12px;padding-right:12px}
+ header{gap:7px}
+ .brandline{gap:7px}
+ .brandmark{width:37px;height:48px}
+ .logo{font-size:23px;letter-spacing:-1.2px}
+ .logo-sub{font-size:9px;letter-spacing:1.2px}
+ .brand-divider{height:42px}
+ .brand-title{font-size:clamp(13px,4.2vw,16px);letter-spacing:.35px}
+ .iconbtn{width:44px;height:44px}
+ .iconbtn svg{width:29px;height:29px}
+ h2{font-size:clamp(13px,3.8vw,16px);letter-spacing:1.3px;gap:8px}
+ .action{min-height:72px;gap:7px;padding:10px 6px;font-size:clamp(15px,4.3vw,18px)}
+ .action .symbol{width:42px}
+ .action .symbol svg{width:38px;height:38px}
+ .primary{min-height:100px;font-size:clamp(24px,7vw,29px)}
+ .primary .symbol svg{width:34px;height:34px}
+ .grid{gap:8px;margin:13px 0}
+ .break-wrap{margin:7px 0 10px}
+ .break45{width:68%;min-height:72px;font-size:clamp(17px,5vw,20px)}
+ .break45 .symbol{width:48px}
+ .break45 .symbol svg{width:47px;height:40px}
+ .finish{min-height:88px;margin-top:13px;font-size:clamp(18px,5.5vw,23px)}
+ .finish .symbol{width:62px}
+ .finish .symbol svg{width:60px;height:49px}
+ .bottom{gap:8px;margin-top:13px}
+ .bottom .action{min-height:78px;font-size:clamp(13px,3.7vw,15px);gap:5px}
+ .bottom .action .symbol{width:38px}
+ .bottom .action .symbol svg{width:36px;height:36px}
+ footer{font-size:10px;padding-top:20px}
+ .footer-version{display:block;margin:0;padding:0;border:0}
+}
 </style>
 </head>
 <body>
