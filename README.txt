@@ -1,18 +1,11 @@
-TRUCK CONNECT QUICK — v21 CMR document scanner
+Truck Connect Quick v22 — live CMR document framing
 
-Files: index.html, manifest.webmanifest, sw.js and app icons.
+Changes from v21:
+- Camera preview uses a compact portrait viewfinder instead of an elongated full-height preview.
+- Live on-device page detection runs while the camera is open.
+- A white four-corner outline appears around a detected page; it turns green when detection is stable.
+- The captured page is cropped and perspective-corrected using a fresh detection at capture time.
+- Existing PDF creation, sharing, and temporary-file cleanup behavior is preserved.
 
-Changes in v21:
-- On-device document-edge detection for high-contrast paper backgrounds.
-- Automatic crop and perspective correction when a page is detected.
-- Preserves the page's original color information.
-- Falls back to the full camera frame when edges cannot be detected reliably.
-- Combines captured pages into one PDF.
-- After the system share action completes, clears temporary scan images, generated PDF references and selected attachment references from app memory. If sharing is cancelled, files remain available for retry.
-- No document archive or app-side scan history.
-
-Important:
-- Detection works best with a light sheet on a darker, contrasting, flat surface.
-- The camera requires HTTPS and permission.
-- The PDF is handed to the phone's share sheet; verify the recipient and press Send in the mail app. The app cannot verify that the email itself was sent.
-- Settings remain stored locally as before.
+Install by replacing the files in the GitHub Pages repository with the contents of this archive.
+Camera access requires HTTPS and permission from the browser. Detection works best with a light CMR sheet on a darker, plain surface.
