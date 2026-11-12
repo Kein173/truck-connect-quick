@@ -323,6 +323,26 @@ footer{flex:0 0 auto!important;margin-top:8px!important;padding-top:5px!importan
  .bottom>.action{min-height:59px!important}
 }
 
+
+/* v18: hidden screens must always stay hidden, including the flex home screen */
+#home.hidden,
+section.hidden,
+.hidden{
+ display:none!important;
+}
+#home:not(.hidden){
+ display:flex!important;
+}
+#settings:not(.hidden),
+#cmr:not(.hidden),
+#compose:not(.hidden){
+ display:block!important;
+ flex:1 1 auto!important;
+ min-height:0!important;
+ overflow-y:auto!important;
+ overscroll-behavior:contain;
+}
+
 </style>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
