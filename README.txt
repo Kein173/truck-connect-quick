@@ -1,22 +1,18 @@
-TRUCK CONNECT QUICK — v20 CMR scanner feedback update
+TRUCK CONNECT QUICK — v21 CMR document scanner
 
-Files:
-- index.html: app interface and interactions
-- manifest.webmanifest: installable web app metadata
-- sw.js: offline cache (v20)
-- icon files: app icons
+Files: index.html, manifest.webmanifest, sw.js and app icons.
 
-Changes in v20:
-- Clear confirmation after each captured page
-- Visible page counter and thumbnail previews
-- Each page can be removed before PDF creation
-- Capture button shows a saving state and is temporarily disabled to prevent accidental repeated captures
-- Short vibration confirmation where supported
-- PDF creation button is protected against repeated taps
-
-Existing app functions and layout are retained from the v19 CMR scanner build.
+Changes in v21:
+- On-device document-edge detection for high-contrast paper backgrounds.
+- Automatic crop and perspective correction when a page is detected.
+- Preserves the page's original color information.
+- Falls back to the full camera frame when edges cannot be detected reliably.
+- Combines captured pages into one PDF.
+- After the system share action completes, clears temporary scan images, generated PDF references and selected attachment references from app memory. If sharing is cancelled, files remain available for retry.
+- No document archive or app-side scan history.
 
 Important:
-- Camera access requires HTTPS and browser permission.
-- Email attachments are handed off through the phone's system Share menu; the recipient should be checked before sending.
-- Settings remain local to the device.
+- Detection works best with a light sheet on a darker, contrasting, flat surface.
+- The camera requires HTTPS and permission.
+- The PDF is handed to the phone's share sheet; verify the recipient and press Send in the mail app. The app cannot verify that the email itself was sent.
+- Settings remain stored locally as before.
