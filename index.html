@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="ru">
 <head>
@@ -8,36 +7,53 @@
 <title>Truck Connect Quick</title>
 <link rel="manifest" href="manifest.webmanifest">
 <style>
-:root{color-scheme:dark;--bg:#101820;--panel:#1b2732;--panel2:#22313e;--line:#344654;--text:#f4f7f9;--muted:#aab8c3;--accent:#b9d6e8}
-*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);font:16px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-.app{max-width:520px;min-height:100dvh;margin:auto;padding:calc(18px + env(safe-area-inset-top)) 16px calc(20px + env(safe-area-inset-bottom))}
-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
-.brand{font-size:19px;font-weight:800;letter-spacing:1.2px}.sub{font-size:10px;letter-spacing:2px;color:var(--muted);margin-top:3px}
-.iconbtn,.btn{border:1px solid var(--line);background:var(--panel);color:var(--text);border-radius:14px}
-.iconbtn{width:44px;height:44px;font-size:20px}
-h2{font-size:12px;letter-spacing:1.5px;color:var(--muted);font-weight:600;margin:20px 2px 10px}
-.action{width:100%;min-height:76px;padding:14px 10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;font-weight:700;font-size:14px;line-height:1.2}
-.primary{min-height:88px;background:#d7e8f2;color:#14222c;border:0;font-size:19px}
-.finish{min-height:88px;background:#344b5b;border-color:#597184;font-size:19px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
-.symbol{font-size:22px}.bottom{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+:root{color-scheme:dark;--bg:#071321;--panel:#10243a;--panel2:#163451;--line:#47708f;--text:#f5f8fb;--muted:#a9bdce;--accent:#8fc8ed}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:16px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.app{max-width:520px;min-height:100dvh;margin:auto;padding:calc(18px + env(safe-area-inset-top)) 16px calc(16px + env(safe-area-inset-bottom));display:flex;flex-direction:column}
+header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid #29445c}
+.brandline{display:flex;align-items:center;gap:11px}
+.logo{font-size:23px;font-weight:900;letter-spacing:-1.2px;white-space:nowrap;color:#f6f8fa}
+.logo .four{color:#e04449}
+.logo-sub{font-size:8px;letter-spacing:1.8px;color:#b5c7d6;margin-top:1px}
+.brand-divider{height:34px;width:1px;background:#45617a}
+.brand-title{font-size:17px;font-weight:800;letter-spacing:1.2px}
+.iconbtn,.btn{border:1px solid var(--line);background:var(--panel);color:var(--text);border-radius:2px}
+.iconbtn{width:42px;height:42px;font-size:20px}
+h2{font-size:11px;letter-spacing:1.7px;color:var(--muted);font-weight:650;margin:13px 1px 10px}
+.action{width:100%;min-height:66px;padding:10px 8px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;text-align:center;font-weight:750;font-size:13px;line-height:1.15;border-width:1px}
+.primary{min-height:72px;background:#123451;color:#fff;border:1px solid #6a9bc0;font-size:19px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:10px 0}
+.symbol{font-size:21px;line-height:1}
+.break-wrap{display:flex;justify-content:center;margin:1px 0 7px}
+.break45{width:116px;min-height:58px;background:#0d2033;border:1px solid #8ab8d5;color:#fff;gap:3px}
+.break45 .symbol{font-size:0}
+.bed-icon{width:26px;height:20px;display:block}
+.finish{min-height:68px;background:#123451;border-color:#6a9bc0;font-size:17px}
+.bottom{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:12px}
 button{cursor:pointer}button:active{transform:scale(.985)}
-.panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:15px;margin-top:12px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:2px;padding:15px;margin-top:12px}
 .hidden{display:none!important}.muted{color:var(--muted);font-size:13px;line-height:1.45}
 label{display:block;font-size:13px;color:var(--muted);margin:14px 0 6px}
-input,select{width:100%;background:#101820;color:var(--text);border:1px solid var(--line);border-radius:10px;padding:13px;font-size:16px}
+input,select{width:100%;background:#071321;color:var(--text);border:1px solid var(--line);border-radius:2px;padding:13px;font-size:16px}
 .btn{padding:13px 15px;font-weight:650}.wide{width:100%;margin-top:12px}
 .row{display:flex;gap:9px}.row>*{flex:1}
 .filelist{font-size:13px;color:var(--muted);margin-top:10px;overflow-wrap:anywhere}
 .notice{font-size:12px;color:#c3d1da;line-height:1.45;margin-top:12px}
 .back{margin:0 0 14px;background:transparent;border:0;color:var(--accent);padding:8px 0;font-size:15px}
-footer{text-align:center;color:#71818d;font-size:11px;margin-top:24px}
+footer{text-align:center;color:#849bad;font-size:9px;line-height:1.6;margin-top:auto;padding-top:18px}
+.footer-version{display:block;letter-spacing:.4px}
+@media(max-width:360px){.brand-title{font-size:14px}.logo{font-size:20px}.action{font-size:12px}}
 </style>
 </head>
 <body>
 <div class="app">
 <header>
- <div><div class="brand">TRUCK CONNECT</div><div class="sub">QUICK DRIVER</div></div>
+ <div class="brandline">
+  <div><div class="logo">MB<span class="four">4</span>YOU</div><div class="logo-sub">sp. z o.o.</div></div>
+  <div class="brand-divider"></div>
+  <div class="brand-title">TRUCK CONNECT</div>
+ </div>
  <button class="iconbtn" id="settingsBtn" aria-label="Настройки">⚙</button>
 </header>
 
@@ -45,12 +61,20 @@ footer{text-align:center;color:#71818d;font-size:11px;margin-top:24px}
  <h2>БЫСТРЫЕ СООБЩЕНИЯ</h2>
  <button class="btn action primary" data-action="start"><span class="symbol">▶</span><span data-t="start">СТАРТ</span></button>
  <div class="grid">
-  <button class="btn action" data-action="arriveLoad"><span class="symbol">📍</span><span data-t="arriveLoad">ПРИБЫЛ НА ЗАГРУЗКУ</span></button>
-  <button class="btn action" data-action="beginLoad"><span class="symbol">▣</span><span data-t="beginLoad">НАЧАЛО ЗАГРУЗКИ</span></button>
-  <button class="btn action" data-action="arriveUnload"><span class="symbol">📍</span><span data-t="arriveUnload">ПРИБЫЛ НА ВЫГРУЗКУ</span></button>
-  <button class="btn action" data-action="beginUnload"><span class="symbol">▣</span><span data-t="beginUnload">НАЧАЛО ВЫГРУЗКИ</span></button>
+  <button class="btn action" data-action="arriveLoad"><span class="symbol">⇩</span><span data-t="arriveLoad">ЗАГРУЗКА</span></button>
+  <button class="btn action" data-action="beginLoad"><span class="symbol">▣</span><span data-t="beginLoad">НАЧАЛО</span></button>
  </div>
- <button class="btn action finish" data-action="finish"><span class="symbol">■</span><span data-t="finish">ЗАВЕРШИТЬ РЕЙС</span></button>
+ <div class="break-wrap">
+  <button class="btn action break45" data-action="break45" aria-label="Пауза 45 минут">
+   <svg class="bed-icon" viewBox="0 0 48 32" aria-hidden="true"><path d="M5 5v22M5 20h38v7M5 14h10a6 6 0 0 1 6 6M21 14h16a6 6 0 0 1 6 6M43 20v7M2 27h44" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square" stroke-linejoin="miter"/></svg>
+   <span>45 МИН</span>
+  </button>
+ </div>
+ <div class="grid">
+  <button class="btn action" data-action="arriveUnload"><span class="symbol">⇧</span><span data-t="arriveUnload">ВЫГРУЗКА</span></button>
+  <button class="btn action" data-action="beginUnload"><span class="symbol">▣</span><span data-t="beginUnload">НАЧАЛО</span></button>
+ </div>
+ <button class="btn action finish" data-action="finish"><svg class="bed-icon" viewBox="0 0 48 32" aria-hidden="true"><path d="M5 5v22M5 20h38v7M5 14h10a6 6 0 0 1 6 6M21 14h16a6 6 0 0 1 6 6M43 20v7M2 27h44" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square" stroke-linejoin="miter"/></svg><span>9–11 Ч</span></button>
  <div class="bottom">
   <button class="btn action" id="cmrBtn"><span class="symbol">📄</span><span data-t="cmr">CMR / ДОКУМЕНТЫ</span></button>
   <button class="btn action" id="messageBtn"><span class="symbol">💬</span><span data-t="message">СООБЩЕНИЕ</span></button>
@@ -100,27 +124,31 @@ footer{text-align:center;color:#71818d;font-size:11px;margin-top:24px}
   <button class="btn wide" id="sendCustom" data-t="openWhatsApp">Открыть WhatsApp</button>
  </div>
 </section>
-<footer>Truck Connect Quick · prototype</footer>
+<footer>Specially for MB4You sp. z o.o. Drivers. Ihor Tiahun<span class="footer-version">Truck Connect — версия 1.0</span></footer>
 </div>
 <script>
 const dict={
-ru:{start:"СТАРТ",arriveLoad:"ПРИБЫЛ НА ЗАГРУЗКУ",beginLoad:"НАЧАЛО ЗАГРУЗКИ",arriveUnload:"ПРИБЫЛ НА ВЫГРУЗКУ",beginUnload:"НАЧАЛО ВЫГРУЗКИ",finish:"ЗАВЕРШИТЬ РЕЙС",cmr:"CMR / ДОКУМЕНТЫ",message:"СООБЩЕНИЕ",back:"Назад",settingsTitle:"НАСТРОЙКИ",language:"Язык",phone:"Номер логиста WhatsApp",email:"E-mail для CMR",save:"Сохранить настройки",localOnly:"Настройки сохраняются только на этом устройстве.",cmrTitle:"ОТПРАВКА CMR",cmrNumber:"Номер CMR (необязательно)",recipientLabel:"Получатель письма",copyEmail:"Скопировать e-mail",copyDone:"E-mail скопирован",copyMissing:"Сначала укажи e-mail в настройках",takePhoto:"Сфотографировать страницы",chooseFiles:"Добавить фото, сканы или файлы",shareMail:"Передать вложения в Почту",openMail:"Открыть письмо без вложений",mailNotice:"На iPhone веб-приложение не может одновременно гарантировать заранее заполненного получателя и прикрепление файлов в стандартной Почте. Для вложений откроется системное меню «Поделиться»: выбери «Почта» и проверь адрес перед отправкой.",composeTitle:"СООБЩЕНИЕ ЛОГИСТУ",textMessage:"Текст сообщения",openWhatsApp:"Открыть WhatsApp"},
-en:{start:"START",arriveLoad:"ARRIVED AT LOADING",beginLoad:"LOADING STARTED",arriveUnload:"ARRIVED AT UNLOADING",beginUnload:"UNLOADING STARTED",finish:"TRIP COMPLETED",cmr:"CMR / DOCUMENTS",message:"MESSAGE",back:"Back",settingsTitle:"SETTINGS",language:"Language",phone:"Logistics WhatsApp number",email:"CMR e-mail",save:"Save settings",localOnly:"Settings are stored on this device only.",cmrTitle:"SEND CMR",cmrNumber:"CMR number (optional)",recipientLabel:"Email recipient",copyEmail:"Copy email",copyDone:"Email copied",copyMissing:"Add an email in Settings first",takePhoto:"Take page photos",chooseFiles:"Add photos, scans or files",shareMail:"Share attachments to Mail",openMail:"Open email without attachments",mailNotice:"On iPhone, a web app cannot guarantee both a prefilled recipient and file attachments in Apple Mail. For attachments, the system Share menu opens: choose Mail and check the recipient before sending.",composeTitle:"MESSAGE TO LOGISTICS",textMessage:"Message text",openWhatsApp:"Open WhatsApp"},
-pl:{start:"START",arriveLoad:"PRZYJAZD NA ZAŁADUNEK",beginLoad:"ROZPOCZĘCIE ZAŁADUNKU",arriveUnload:"PRZYJAZD NA ROZŁADUNEK",beginUnload:"ROZPOCZĘCIE ROZŁADUNKU",finish:"KONIEC TRASY",cmr:"CMR / DOKUMENTY",message:"WIADOMOŚĆ",back:"Wstecz",settingsTitle:"USTAWIENIA",language:"Język",phone:"Numer WhatsApp logistyka",email:"E-mail do CMR",save:"Zapisz ustawienia",localOnly:"Ustawienia są przechowywane tylko na tym urządzeniu.",cmrTitle:"WYŚLIJ CMR",cmrNumber:"Numer CMR (opcjonalnie)",recipientLabel:"Adresat wiadomości",copyEmail:"Kopiuj e-mail",copyDone:"E-mail skopiowany",copyMissing:"Najpierw ustaw e-mail w Ustawieniach",takePhoto:"Zrób zdjęcia stron",chooseFiles:"Dodaj zdjęcia, skany lub pliki",shareMail:"Udostępnij załączniki do Mail",openMail:"Otwórz e-mail bez załączników",mailNotice:"Na iPhonie aplikacja internetowa nie może zagwarantować jednocześnie wstępnie ustawionego odbiorcy i załączników w Apple Mail. Przy załącznikach otworzy się menu Udostępnij: wybierz Mail i sprawdź odbiorcę.",composeTitle:"WIADOMOŚĆ DO LOGISTYKI",textMessage:"Treść wiadomości",openWhatsApp:"Otwórz WhatsApp"},
-de:{start:"START",arriveLoad:"ANKUNFT ZUR BELADUNG",beginLoad:"BELADUNG BEGONNEN",arriveUnload:"ANKUNFT ZUR ENTLADUNG",beginUnload:"ENTLADUNG BEGONNEN",finish:"TOUR BEENDET",cmr:"CMR / DOKUMENTE",message:"NACHRICHT",back:"Zurück",settingsTitle:"EINSTELLUNGEN",language:"Sprache",phone:"WhatsApp-Nummer der Disposition",email:"E-Mail für CMR",save:"Einstellungen speichern",localOnly:"Einstellungen werden nur auf diesem Gerät gespeichert.",cmrTitle:"CMR SENDEN",cmrNumber:"CMR-Nummer (optional)",recipientLabel:"E-Mail-Empfänger",copyEmail:"E-Mail kopieren",copyDone:"E-Mail kopiert",copyMissing:"Bitte zuerst eine E-Mail-Adresse in den Einstellungen eintragen",takePhoto:"Seiten fotografieren",chooseFiles:"Fotos, Scans oder Dateien hinzufügen",shareMail:"Anhänge an Mail teilen",openMail:"E-Mail ohne Anhänge öffnen",mailNotice:"Auf dem iPhone kann eine Web-App in Apple Mail nicht gleichzeitig Empfänger und Anhänge zuverlässig vorausfüllen. Für Anhänge öffnet sich das Teilen-Menü: Mail wählen und Empfänger prüfen.",composeTitle:"NACHRICHT AN DIE DISPOSITION",textMessage:"Nachrichtentext",openWhatsApp:"WhatsApp öffnen"},
-nl:{start:"START",arriveLoad:"AANGEKOMEN BIJ LADEN",beginLoad:"LADEN GESTART",arriveUnload:"AANGEKOMEN BIJ LOSSEN",beginUnload:"LOSSEN GESTART",finish:"RIT AFGEROND",cmr:"CMR / DOCUMENTEN",message:"BERICHT",back:"Terug",settingsTitle:"INSTELLINGEN",language:"Taal",phone:"WhatsApp-nummer planning",email:"E-mail voor CMR",save:"Instellingen opslaan",localOnly:"Instellingen worden alleen op dit apparaat opgeslagen.",cmrTitle:"CMR VERZENDEN",cmrNumber:"CMR-nummer (optioneel)",recipientLabel:"E-mailontvanger",copyEmail:"E-mail kopiëren",copyDone:"E-mail gekopieerd",copyMissing:"Voeg eerst een e-mailadres toe bij Instellingen",takePhoto:"Pagina's fotograferen",chooseFiles:"Foto's, scans of bestanden toevoegen",shareMail:"Bijlagen delen met Mail",openMail:"E-mail openen zonder bijlagen",mailNotice:"Op iPhone kan een webapp in Apple Mail niet tegelijk de ontvanger en bijlagen betrouwbaar vooraf invullen. Kies in het deelmenu Mail en controleer de ontvanger.",composeTitle:"BERICHT AAN PLANNING",textMessage:"Berichttekst",openWhatsApp:"WhatsApp openen"}
+ru:{start:"СТАРТ",arriveLoad:"ЗАГРУЗКА",beginLoad:"НАЧАЛО",arriveUnload:"ВЫГРУЗКА",beginUnload:"НАЧАЛО",finish:"ЗАВЕРШИТЬ РЕЙС",cmr:"CMR / ДОКУМЕНТЫ",message:"СООБЩЕНИЕ",back:"Назад",settingsTitle:"НАСТРОЙКИ",language:"Язык",phone:"Номер логиста WhatsApp",email:"E-mail для CMR",save:"Сохранить настройки",localOnly:"Настройки сохраняются только на этом устройстве.",cmrTitle:"ОТПРАВКА CMR",cmrNumber:"Номер CMR (необязательно)",recipientLabel:"Получатель письма",copyEmail:"Скопировать e-mail",copyDone:"E-mail скопирован",copyMissing:"Сначала укажи e-mail в настройках",takePhoto:"Сфотографировать страницы",chooseFiles:"Добавить фото, сканы или файлы",shareMail:"Передать вложения в Почту",openMail:"Открыть письмо без вложений",mailNotice:"На iPhone веб-приложение не может одновременно гарантировать заранее заполненного получателя и прикрепление файлов в стандартной Почте. Для вложений откроется системное меню «Поделиться»: выбери «Почта» и проверь адрес перед отправкой.",composeTitle:"СООБЩЕНИЕ ЛОГИСТУ",textMessage:"Текст сообщения",openWhatsApp:"Открыть WhatsApp"},
+en:{start:"START",arriveLoad:"LOADING",beginLoad:"START",arriveUnload:"UNLOADING",beginUnload:"START",finish:"TRIP COMPLETED",cmr:"CMR / DOCUMENTS",message:"MESSAGE",back:"Back",settingsTitle:"SETTINGS",language:"Language",phone:"Logistics WhatsApp number",email:"CMR e-mail",save:"Save settings",localOnly:"Settings are stored on this device only.",cmrTitle:"SEND CMR",cmrNumber:"CMR number (optional)",recipientLabel:"Email recipient",copyEmail:"Copy email",copyDone:"Email copied",copyMissing:"Add an email in Settings first",takePhoto:"Take page photos",chooseFiles:"Add photos, scans or files",shareMail:"Share attachments to Mail",openMail:"Open email without attachments",mailNotice:"On iPhone, a web app cannot guarantee both a prefilled recipient and file attachments in Apple Mail. For attachments, the system Share menu opens: choose Mail and check the recipient before sending.",composeTitle:"MESSAGE TO LOGISTICS",textMessage:"Message text",openWhatsApp:"Open WhatsApp"},
+pl:{start:"START",arriveLoad:"ZAŁADUNEK",beginLoad:"START",arriveUnload:"ROZŁADUNEK",beginUnload:"START",finish:"KONIEC TRASY",cmr:"CMR / DOKUMENTY",message:"WIADOMOŚĆ",back:"Wstecz",settingsTitle:"USTAWIENIA",language:"Język",phone:"Numer WhatsApp logistyka",email:"E-mail do CMR",save:"Zapisz ustawienia",localOnly:"Ustawienia są przechowywane tylko na tym urządzeniu.",cmrTitle:"WYŚLIJ CMR",cmrNumber:"Numer CMR (opcjonalnie)",recipientLabel:"Adresat wiadomości",copyEmail:"Kopiuj e-mail",copyDone:"E-mail skopiowany",copyMissing:"Najpierw ustaw e-mail w Ustawieniach",takePhoto:"Zrób zdjęcia stron",chooseFiles:"Dodaj zdjęcia, skany lub pliki",shareMail:"Udostępnij załączniki do Mail",openMail:"Otwórz e-mail bez załączników",mailNotice:"Na iPhonie aplikacja internetowa nie może zagwarantować jednocześnie wstępnie ustawionego odbiorcy i załączników w Apple Mail. Przy załącznikach otworzy się menu Udostępnij: wybierz Mail i sprawdź odbiorcę.",composeTitle:"WIADOMOŚĆ DO LOGISTYKI",textMessage:"Treść wiadomości",openWhatsApp:"Otwórz WhatsApp"},
+de:{start:"START",arriveLoad:"BELADUNG",beginLoad:"START",arriveUnload:"ENTLADUNG",beginUnload:"START",finish:"TOUR BEENDET",cmr:"CMR / DOKUMENTE",message:"NACHRICHT",back:"Zurück",settingsTitle:"EINSTELLUNGEN",language:"Sprache",phone:"WhatsApp-Nummer der Disposition",email:"E-Mail für CMR",save:"Einstellungen speichern",localOnly:"Einstellungen werden nur auf diesem Gerät gespeichert.",cmrTitle:"CMR SENDEN",cmrNumber:"CMR-Nummer (optional)",recipientLabel:"E-Mail-Empfänger",copyEmail:"E-Mail kopieren",copyDone:"E-Mail kopiert",copyMissing:"Bitte zuerst eine E-Mail-Adresse in den Einstellungen eintragen",takePhoto:"Seiten fotografieren",chooseFiles:"Fotos, Scans oder Dateien hinzufügen",shareMail:"Anhänge an Mail teilen",openMail:"E-Mail ohne Anhänge öffnen",mailNotice:"Auf dem iPhone kann eine Web-App in Apple Mail nicht gleichzeitig Empfänger und Anhänge zuverlässig vorausfüllen. Für Anhänge öffnet sich das Teilen-Menü: Mail wählen und Empfänger prüfen.",composeTitle:"NACHRICHT AN DIE DISPOSITION",textMessage:"Nachrichtentext",openWhatsApp:"WhatsApp öffnen"},
+nl:{start:"START",arriveLoad:"LADEN",beginLoad:"START",arriveUnload:"LOSSEN",beginUnload:"START",finish:"RIT AFGEROND",cmr:"CMR / DOCUMENTEN",message:"BERICHT",back:"Terug",settingsTitle:"INSTELLINGEN",language:"Taal",phone:"WhatsApp-nummer planning",email:"E-mail voor CMR",save:"Instellingen opslaan",localOnly:"Instellingen worden alleen op dit apparaat opgeslagen.",cmrTitle:"CMR VERZENDEN",cmrNumber:"CMR-nummer (optioneel)",recipientLabel:"E-mailontvanger",copyEmail:"E-mail kopiëren",copyDone:"E-mail gekopieerd",copyMissing:"Voeg eerst een e-mailadres toe bij Instellingen",takePhoto:"Pagina's fotograferen",chooseFiles:"Foto's, scans of bestanden toevoegen",shareMail:"Bijlagen delen met Mail",openMail:"E-mail openen zonder bijlagen",mailNotice:"Op iPhone kan een webapp in Apple Mail niet tegelijk de ontvanger en bijlagen betrouwbaar vooraf invullen. Kies in het deelmenu Mail en controleer de ontvanger.",composeTitle:"BERICHT AAN PLANNING",textMessage:"Berichttekst",openWhatsApp:"WhatsApp openen"}
 };
 const actionKeys={start:"start",arriveLoad:"arriveLoad",beginLoad:"beginLoad",arriveUnload:"arriveUnload",beginUnload:"beginUnload",finish:"finish"};
 let files=[];
 const $=id=>document.getElementById(id);
 function lang(){return localStorage.getItem("tcq_lang")||"ru"}
 function t(k){return dict[lang()][k]||dict.ru[k]||k}
-function applyLang(){document.documentElement.lang=lang();document.querySelectorAll("[data-t]").forEach(el=>el.textContent=t(el.dataset.t));$("language").value=lang();document.querySelectorAll("[data-action]").forEach(b=>b.querySelector("[data-t]").textContent=t(b.querySelector("[data-t]").dataset.t))}
+function applyLang(){document.documentElement.lang=lang();document.querySelectorAll("[data-t]").forEach(el=>el.textContent=t(el.dataset.t));$("language").value=lang();document.querySelectorAll("[data-action]").forEach(b=>{const label=b.querySelector("[data-t]");if(label)label.textContent=t(label.dataset.t)})}
 function show(id){["home","settings","cmr","compose"].forEach(x=>$(x).classList.toggle("hidden",x!==id))}
 function now(){return new Intl.DateTimeFormat(undefined,{hour:"2-digit",minute:"2-digit",hour12:false}).format(new Date())}
 function eventText(key){const fixedCodes={start:"STA",arriveLoad:"ZA",beginLoad:"Start ZA",arriveUnload:"RO",beginUnload:"Start RO",finish:"PA"};return fixedCodes[key]+" — "+now()}
 function openWA(text){const phone=localStorage.getItem("tcq_phone")||"";const url="https://wa.me/"+phone.replace(/\D/g,"")+"?text="+encodeURIComponent(text);location.href=url}
-document.querySelectorAll("[data-action]").forEach(b=>b.addEventListener("click",()=>openWA(eventText(actionKeys[b.dataset.action]))));
+document.querySelectorAll("[data-action]").forEach(b=>b.addEventListener("click",()=>{
+ const key=b.dataset.action;
+ if(key==="break45"){openWA("PO — "+now());return;}
+ openWA(eventText(actionKeys[key]));
+}));
 $("settingsBtn").onclick=()=>{ $("language").value=lang();$("phone").value=localStorage.getItem("tcq_phone")||"";$("email").value=localStorage.getItem("tcq_email")||"";show("settings")};
 document.querySelectorAll("[data-back]").forEach(b=>b.onclick=()=>show("home"));
 $("saveSettings").onclick=()=>{localStorage.setItem("tcq_lang",$("language").value);localStorage.setItem("tcq_phone",$("phone").value.trim());localStorage.setItem("tcq_email",$("email").value.trim());applyLang();show("home")};

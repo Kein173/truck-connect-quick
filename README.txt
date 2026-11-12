@@ -22,4 +22,3 @@ Important limitations:
 - Settings are stored locally in the browser; no server or message history is used.
 
 To test as a web app, host these files over HTTPS. PWA installation and camera/share capabilities vary by browser and device.
-Update Truck Connect Quick
