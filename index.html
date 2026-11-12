@@ -190,17 +190,19 @@ body{
  height:100vh!important;height:100dvh!important;
  min-height:0!important;max-height:none!important;
  margin:0 auto!important;
- overflow:hidden!important;
+ overflow-x:hidden!important;overflow-y:auto!important;
+ -webkit-overflow-scrolling:touch;overscroll-behavior-y:contain;scrollbar-width:none;
  display:flex!important;flex-direction:column!important;
  padding-top:calc(env(safe-area-inset-top, 0px) + 10px)!important;
  padding-right:clamp(10px,3.3vw,16px)!important;
- padding-bottom:calc(env(safe-area-inset-bottom, 0px) + 8px)!important;
+ padding-bottom:calc(env(safe-area-inset-bottom, 0px) + 22px)!important;
  padding-left:clamp(10px,3.3vw,16px)!important;
 }
 header,main,footer{flex-shrink:0}
 main{overflow:visible!important}
 footer{margin-top:auto!important;padding-top:8px!important}
 
+ .app::-webkit-scrollbar{display:none}
 </style>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -333,4 +335,17 @@ if("serviceWorker" in navigator && location.protocol.startsWith("http"))navigato
 
 
 
+<script>
+(function(){
+ function resetAppScroll(){
+   var app=document.querySelector('.app');
+   if(app) app.scrollTop=0;
+ }
+ window.addEventListener('pageshow',function(){setTimeout(resetAppScroll,80)});
+ window.addEventListener('load',function(){setTimeout(resetAppScroll,80)});
+ document.addEventListener('visibilitychange',function(){
+   if(!document.hidden) setTimeout(resetAppScroll,80);
+ });
+})();
+</script>
 </body></html>
