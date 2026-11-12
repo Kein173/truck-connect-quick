@@ -173,7 +173,37 @@ body{position:fixed;inset:0}
 .app{position:absolute;inset:0;width:100%;height:100%;min-height:0;max-height:none;margin:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior-y:none;scrollbar-width:none;padding-top:calc(12px + env(safe-area-inset-top));padding-bottom:calc(12px + env(safe-area-inset-bottom))}
 .app::-webkit-scrollbar{display:none}.app{overflow-anchor:none;scroll-behavior:auto}
 
+
+/* v13: fixed standalone iPhone canvas; no saved scroll offset can crop the header */
+html,body{
+ width:100%;height:100%;min-height:100%;margin:0;padding:0;
+ overflow:hidden!important;overscroll-behavior:none;
+ background:#031225;
+}
+body{
+ position:fixed!important;inset:0!important;
+}
+.app{
+ position:fixed!important;
+ inset:0!important;
+ width:100%!important;max-width:560px!important;
+ height:100vh!important;height:100dvh!important;
+ min-height:0!important;max-height:none!important;
+ margin:0 auto!important;
+ overflow:hidden!important;
+ display:flex!important;flex-direction:column!important;
+ padding-top:calc(env(safe-area-inset-top, 0px) + 10px)!important;
+ padding-right:clamp(10px,3.3vw,16px)!important;
+ padding-bottom:calc(env(safe-area-inset-bottom, 0px) + 8px)!important;
+ padding-left:clamp(10px,3.3vw,16px)!important;
+}
+header,main,footer{flex-shrink:0}
+main{overflow:visible!important}
+footer{margin-top:auto!important;padding-top:8px!important}
+
 </style>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 </head>
 <body>
 <div class="app">
@@ -301,27 +331,6 @@ applyLang();
 if("serviceWorker" in navigator && location.protocol.startsWith("http"))navigator.serviceWorker.register("./sw.js").catch(()=>{});
 </script>
 
-<script>
-(function(){
-  function resetPagePosition(){
-    try {
-      document.documentElement.scrollTop = 0;
-      document.body.scrollTop = 0;
-      var app = document.querySelector('.app');
-      if (app) {
-        app.scrollTop = 0;
-        app.scrollTo({top:0,left:0,behavior:'instant'});
-      }
-    } catch(e) {}
-  }
-  window.addEventListener('pageshow', resetPagePosition);
-  window.addEventListener('load', resetPagePosition);
-  window.addEventListener('orientationchange', function(){ setTimeout(resetPagePosition, 80); });
-  document.addEventListener('visibilitychange', function(){
-    if (!document.hidden) setTimeout(resetPagePosition, 50);
-  });
-  if (document.readyState === 'complete') resetPagePosition();
-})();
-</script>
+
 
 </body></html>
