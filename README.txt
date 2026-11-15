@@ -1,6 +1,6 @@
-Truck Connect Quick v22 — live CMR document framing
+Truck Connect Quick v24 — Ukrainian language and complete UI translations
 
-Changes from v21:
+Changes from v23:
 - Camera preview uses a compact portrait viewfinder instead of an elongated full-height preview.
 - Live on-device page detection runs while the camera is open.
 - A white four-corner outline appears around a detected page; it turns green when detection is stable.
@@ -11,4 +11,6 @@ Install by replacing the files in the GitHub Pages repository with the contents 
 Camera access requires HTTPS and permission from the browser. Detection works best with a light CMR sheet on a darker, plain surface.
 
 
-Версия v23: кнопка 45 МИН перемещена влево; справа добавлена кнопка СТАРТ, отправляющая ST — ЧЧ:ММ. Существующая кнопка СТАРТ переименована в НАЧАТЬ СМЕНУ; её действие STA — ЧЧ:ММ и значок сохранены.
+Версия v24: кнопка 45 МИН перемещена влево; справа добавлена кнопка СТАРТ, отправляющая ST — ЧЧ:ММ. Существующая кнопка СТАРТ переименована в НАЧАТЬ СМЕНУ; её действие STA — ЧЧ:ММ и значок сохранены.
+
+Version 24: Ukrainian language added; translations and scanner status/buttons completed across all supported languages.
