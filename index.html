@@ -12,6 +12,15 @@
 :root{color-scheme:dark;--bg:#031225;--panel:#061a2b;--panel2:#0b4777;--line:#7deaff;--text:#f7f9fc;--muted:#d4e4ef;--accent:#8deaff}
 *{box-sizing:border-box}
 html,body{min-height:100%;width:100%;max-width:100%;overflow-x:hidden;background:var(--bg)}
+body:not(.tcq-activated) .app{visibility:hidden!important}
+#activationGate{position:fixed;inset:0;z-index:2147483647;display:none;align-items:center;justify-content:center;padding:24px;background:radial-gradient(ellipse at 50% 35%,#0a2d4b,#020e20 75%)}
+#activationGate.visible{display:flex}
+#activationCard{width:min(100%,380px);padding:25px 20px;background:#061a2b;border:2px solid #7deaff;border-radius:8px;box-shadow:0 12px 40px #0009;text-align:center}
+#activationCard h1{font-size:21px;letter-spacing:1px;margin:0 0 10px;color:#fff}
+#activationCard p{font-size:13px;color:#d4e4ef;margin:0 0 18px}
+#activationCard input{text-align:center;letter-spacing:5px;font-size:22px}
+#activationError{min-height:20px;margin-top:9px;color:#ff8b8b;font-size:12px}
+#activationSubmit{width:100%;margin-top:10px;background:linear-gradient(110deg,#07518b,#06345e);border-color:#83eaff;color:#fff;font-size:16px;min-height:48px;border-radius:6px}
 body{margin:0;color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
 .app{width:min(100%,560px);min-height:100dvh;margin:0 auto;padding:calc(22px + env(safe-area-inset-top)) 16px calc(20px + env(safe-area-inset-bottom));display:flex;flex-direction:column;background:radial-gradient(ellipse at 50% 38%,#06213a 0%,#031629 58%,#020e20 100%)}
 header{flex:none;display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:17px}
@@ -383,6 +392,15 @@ section.hidden,
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 </head>
 <body>
+<div id="activationGate" class="visible" role="dialog" aria-modal="true" aria-labelledby="activationTitle">
+ <div id="activationCard">
+  <h1 id="activationTitle">TRUCK CONNECT</h1>
+  <p>Введите пароль для активации приложения</p>
+  <input id="activationPassword" type="password" inputmode="numeric" autocomplete="off" maxlength="12" placeholder="Пароль" aria-label="Пароль активации">
+  <button id="activationSubmit" class="btn">Активировать</button>
+  <div id="activationError" aria-live="polite"></div>
+ </div>
+</div>
 <div class="app">
 <header>
  <div class="brandline">
@@ -556,6 +574,15 @@ $("openMail").onclick=()=>{const email=localStorage.getItem("tcq_email")||"";con
 $("messageBtn").onclick=()=>{$("customText").value="";show("compose")};
 $("sendCustom").onclick=()=>{const txt=$("customText").value.trim();if(txt)openWA(txt)};
 applyLang();
+// One-time local activation. This is a convenience gate, not strong security:
+// the shared code is client-side and can be discovered by a technically skilled user.
+const TCQ_ACTIVATION_CODE="32540";
+const TCQ_ACTIVATION_KEY="tcq_device_activated_v1";
+const activationGate=$("activationGate"),activationInput=$("activationPassword"),activationError=$("activationError");
+function unlockThisDevice(){localStorage.setItem(TCQ_ACTIVATION_KEY,"1");document.body.classList.add("tcq-activated");activationGate.classList.remove("visible");activationInput.value="";}
+if(localStorage.getItem(TCQ_ACTIVATION_KEY)==="1"){document.body.classList.add("tcq-activated");activationGate.classList.remove("visible");}
+$("activationSubmit").onclick=()=>{if(activationInput.value===TCQ_ACTIVATION_CODE){unlockThisDevice();}else{activationError.textContent="Неверный пароль. Проверьте код и попробуйте ещё раз.";activationInput.value="";activationInput.focus();}};
+activationInput.addEventListener("keydown",e=>{if(e.key==="Enter")$("activationSubmit").click();});
 if("serviceWorker" in navigator && location.protocol.startsWith("http"))navigator.serviceWorker.register("./sw.js").catch(()=>{});
 </script>
 
