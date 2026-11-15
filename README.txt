@@ -1,5 +1,16 @@
-Truck Connect Quick v28 — исправлена ошибка открытия раздела CMR после компактного обновления сканера.
+Truck Connect Quick v24 — Ukrainian language and complete UI translations
 
-В v27 счётчик scanCount был удалён из интерфейса, но осталась ссылка на него в renderScanPages(). Теперь эта ссылка удалена. Кнопка CMR снова открывает раздел; компактный полноэкранный сканер и три кнопки сохранены.
+Changes from v23:
+- Camera preview uses a compact portrait viewfinder instead of an elongated full-height preview.
+- Live on-device page detection runs while the camera is open.
+- A white four-corner outline appears around a detected page; it turns green when detection is stable.
+- The captured page is cropped and perspective-corrected using a fresh detection at capture time.
+- Existing PDF creation, sharing, and temporary-file cleanup behavior is preserved.
 
-Установите, заменив файлы репозитория GitHub Pages содержимым архива. Кэш обновлён до v28.
+Install by replacing the files in the GitHub Pages repository with the contents of this archive.
+Camera access requires HTTPS and permission from the browser. Detection works best with a light CMR sheet on a darker, plain surface.
+
+
+Версия v24: кнопка 45 МИН перемещена влево; справа добавлена кнопка СТАРТ, отправляющая ST — ЧЧ:ММ. Существующая кнопка СТАРТ переименована в НАЧАТЬ СМЕНУ; её действие STA — ЧЧ:ММ и значок сохранены.
+
+Version 24: Ukrainian language added; translations and scanner status/buttons completed across all supported languages.
