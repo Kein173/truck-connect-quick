@@ -9,3 +9,6 @@ Changes from v21:
 
 Install by replacing the files in the GitHub Pages repository with the contents of this archive.
 Camera access requires HTTPS and permission from the browser. Detection works best with a light CMR sheet on a darker, plain surface.
+
+
+Версия v23: кнопка 45 МИН перемещена влево; справа добавлена кнопка СТАРТ, отправляющая ST — ЧЧ:ММ. Существующая кнопка СТАРТ переименована в НАЧАТЬ СМЕНУ; её действие STA — ЧЧ:ММ и значок сохранены.
